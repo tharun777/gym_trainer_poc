@@ -17,7 +17,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.27.1'   # ✅ latest stable as of Sept 2025 (Dart 3.7.0+ included)
+          flutter-version: '3.35.3'   # ✅ required for Dart ^3.7.0
 
       - name: Install dependencies
         run: flutter pub get
@@ -30,3 +30,12 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Build AAB
+        run: flutter build appbundle --release
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
