@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # allows manual trigger from GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'   # adjust to your Flutter version
+          flutter-version: '3.27.1'   # ✅ latest stable as of Sept 2025 (Dart 3.7.0+ included)
 
       - name: Install dependencies
         run: flutter pub get
